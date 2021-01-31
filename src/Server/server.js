@@ -8,6 +8,7 @@ const client = new mongo.MongoClient(uri, { useNewUrlParser: true, useUnifiedTop
 let fireworks;
 client.connect(_err => {
     fireworks = client.db("Firework").collection("fireworks");
+    console.log("firework collection initialized!");
 });
 let server = Http.createServer();
 let port = process.env.PORT;

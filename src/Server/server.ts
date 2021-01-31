@@ -9,6 +9,7 @@ const client: mongo.MongoClient = new mongo.MongoClient(uri, { useNewUrlParser: 
 let fireworks: mongo.Collection;
 client.connect(_err => {
   fireworks = client.db("Firework").collection("fireworks");
+  console.log("firework collection initialized!");
 });
 
 

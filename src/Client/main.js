@@ -141,12 +141,12 @@ var Firework;
         let query = new URLSearchParams();
         query.append("fireworkconfig", JSON.stringify(fireworkSettings));
         query.append("type", "put");
-        fetch("https://firework-eia2.herokuapp.com/" + query.toString());
+        fetch("https://firework-eia2.herokuapp.com/?" + query.toString());
     });
     searchFireworkButton.addEventListener("click", async () => {
         let query = new URLSearchParams();
         query.append("type", "get");
-        const response = await fetch("https://firework-eia2.herokuapp.com/" + query.toString());
+        const response = await fetch("https://firework-eia2.herokuapp.com/?" + query.toString());
         const data = await response.json();
         availableFireworksDropdown.innerHTML = "";
         data.forEach(firework => {
