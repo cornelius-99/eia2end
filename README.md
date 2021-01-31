@@ -8,7 +8,7 @@ Die installation erfolgt in 3 Schritten:
 
 1. [Mongo Server einrichten](#Mongo-Server-einrichten) 
 2. [Heruko Server einrichten](#Heruko-Server-einrichten)
-3. [Änderungen am Code](#nderungen-am-code)
+3. [Änderungen am Code](#änderungen-am-code)
 
 ---
 
