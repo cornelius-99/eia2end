@@ -1,0 +1,46 @@
+body {
+    font-family: sans-serif, Arial, Helvetica;
+    background-color: #333;
+    color: #fff;
+}
+
+div {
+    border: thin solid black;
+    margin: 2em;
+}
+
+header {
+    width: 100%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 27px;
+    grid-template-areas:
+    ". .";
+}
+
+
+#canvas {
+    background-color: #000;
+}
+
+#huepreview {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    display: inline;
+    margin: 0;
+    border: none;
+}
+
+.configDiv {
+    padding: 10px;
+}

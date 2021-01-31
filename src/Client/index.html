@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firework</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header style="display: block">
+    <h1>Potion <input type="button" value="Hallo" onclick="Firework.testfunc"></h1>
+</header>
+<section class="grid-container">
+    <div class="configDiv">
+        <label for="name">Name</label>
+        <input type="text" id="name">
+        <br>
+        <br>
+
+        <label for="description">Description</label>
+        <br>
+        <textarea name="description" id="description" cols="30" rows="5"></textarea>
+        <br>
+
+        <h3>Parameter</h3>
+        <h5>selected hue's:</h5>
+        <ul id="huelist"></ul>
+        <br>
+        hue:
+        <div id="huepreview" style="background-color: hsl(0,100%,50%)">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <input id="hue" type="range" min="0" max="360" value="0"/><input id="addhue"
+                                                                          type="button" value="add hue">
+
+        <br>
+        Saturation: <input id="saturation" type="range" min="0" max="100" />
+        <br>
+        Brightness: <input id="brightness" type="range" min="0" max="100" />
+        <br>
+        Gravity: <input id="gravity" type="number" min="0" max="1"  step="0.01"/>
+        <br>
+        Friction: <input id="friction" type="number" min="0" max="1"  step="0.01"/>
+        <br>
+        Fadeeffect: <input id="fadeeffect" type="number" min="0" max="1"  step="0.01"/>
+        <br>
+        Particleradius: <input id="particleradius" type="number" min="0" max="100"  step="1"/>
+        <br>
+        Particlenumber: <input id="particlenumber" type="number" min="0" max="1000"  step="1"/>
+        <br>
+        Particlespeed: <input id="particlespeed" type="number" min="0" max="100"  step="1"/>
+        <br>
+        Particlealphareduction: <input id="particlealphareduction" type="number" min="0" max="100"  step="1"/>
+
+
+        <h3>Submit Firework</h3>
+        <button type="button" id="submit" style="display: block"> submit recipe</button>
+
+        <br>
+        <h3>Search and load</h3>
+        <button id="searchFireworks"> search fireworkconfigs</button>
+        <select id="availableFireworks">
+            <option value="none">no fireworks available</option>
+        </select>
+        <button id="loadFirework">LOAD</button>
+
+    </div>
+
+
+    <canvas id="canvas" width="800px" height="600px"></canvas>
+
+
+    <br>
+
+</section>
+<script src="utils.js"></script>
+<script src="vector.js"></script>
+<script src="particle.js"></script>
+<script src="fireworkRocket.js" ></script>
+<script src="main.js" defer></script>
+</body>
+</html>
