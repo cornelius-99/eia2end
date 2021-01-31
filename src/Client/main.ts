@@ -19,7 +19,7 @@ namespace Firework {
     name: string;
     description: string;
     config: FireworkConfig;
-    _id?: number;
+    _id?: string;
   };
 
   const defaultFireworkConfig: FireworkConfig = {
@@ -40,6 +40,8 @@ namespace Firework {
     description: "",
     config: defaultFireworkConfig
   };
+
+  let availableFireworks: FireworkSettings[] = [];
 
   let activeFireworks: FireworkRocket[] = [];
 
@@ -86,8 +88,9 @@ namespace Firework {
   const particleSpeedInput: HTMLInputElement = <HTMLInputElement>document.getElementById("particlespeed");
   const particleAlphaReductionInput: HTMLInputElement = <HTMLInputElement>document.getElementById("particlealphareduction");
   const submitFireworkButton: HTMLInputElement = <HTMLInputElement>document.getElementById("submit");
-  // const searchFireworkButton: HTMLInputElement = <HTMLInputElement>document.getElementById("searchFireworks");
-  // const loadFireworkButton: HTMLInputElement = <HTMLInputElement>document.getElementById("loadFirework");
+  const searchFireworkButton: HTMLInputElement = <HTMLInputElement>document.getElementById("searchFireworks");
+  const loadFireworkButton: HTMLInputElement = <HTMLInputElement>document.getElementById("loadFirework");
+  const availableFireworksDropdown: HTMLSelectElement = <HTMLSelectElement>document.getElementById("availableFireworks");
 
 
   //UI events
@@ -183,11 +186,35 @@ namespace Firework {
 
   loadCurrentConfig();
 
-  submitFireworkButton.addEventListener("click", async () => {
+  submitFireworkButton.addEventListener("click", () => {
     let query: URLSearchParams = new URLSearchParams();
     query.append("fireworkconfig", JSON.stringify(fireworkSettings));
     query.append("type", "put");
-    const response: Response = await fetch("https://eia-hfu.herokuapp.com/?" + query.toString());
-    const data: FireworkSettings = await response.json();
+    fetch("https://firework-eia2.herokuapp.com/" + query.toString());
   });
+
+  searchFireworkButton.addEventListener("click", async () => {
+    let query: URLSearchParams = new URLSearchParams();
+    query.append("type", "get");
+    const response: Response = await fetch("https://firework-eia2.herokuapp.com/" + query.toString());
+    const data: FireworkSettings[] = await response.json();
+    availableFireworksDropdown.innerHTML = "";
+    data.forEach(firework => {
+      const newOption: HTMLOptionElement = <HTMLOptionElement>document.createElement("option");
+      newOption.value = <string>firework._id;
+      newOption.text = firework.name;
+      availableFireworksDropdown.add(newOption);
+    });
+    availableFireworks = data;
+  });
+
+  loadFireworkButton.addEventListener("click", () => {
+    const selectedId: string = availableFireworksDropdown.value;
+    const selectedFirework: FireworkSettings = <FireworkSettings>availableFireworks.find(firework => {
+      return firework._id == selectedId;
+    });
+    fireworkSettings = selectedFirework;
+    loadCurrentConfig();
+  });
+
 }
