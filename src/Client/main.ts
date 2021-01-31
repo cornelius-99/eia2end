@@ -98,7 +98,7 @@ namespace Firework {
   fireworkName.addEventListener("input", () => fireworkSettings.name = fireworkName.value);
 
   //description change
-  fireworkDescription.addEventListener("input", () => fireworkSettings.name = fireworkDescription.value);
+  fireworkDescription.addEventListener("input", () => fireworkSettings.description = fireworkDescription.value);
 
   //add hue to list
   addHue.addEventListener("click", () => {
@@ -173,6 +173,8 @@ namespace Firework {
 
   function loadCurrentConfig(): void {
     displayHues();
+    fireworkName.value = fireworkSettings.name;
+    fireworkDescription.value = fireworkSettings.description;
     saturationInput.value = fireworkSettings.config.saturation.toString();
     brightnessInput.value = fireworkSettings.config.brightness.toString();
     gravityInput.value = fireworkSettings.config.gravity.toString();
@@ -188,6 +190,7 @@ namespace Firework {
 
   submitFireworkButton.addEventListener("click", () => {
     let query: URLSearchParams = new URLSearchParams();
+    fireworkSettings._id = undefined;
     query.append("fireworkconfig", JSON.stringify(fireworkSettings));
     query.append("type", "put");
     fetch("https://firework-eia2.herokuapp.com/?" + query.toString());
