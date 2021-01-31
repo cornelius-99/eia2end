@@ -1,4 +1,18 @@
-# Installationsanleitung
+# Firework Canvas
+
+## Parameter Beschreibung
+* Hue: Hue sind die verfügbaren Farben der Partikel
+* Saturation: Die Sättigung der Partikelfarben
+* Brightness: >50% mehr richtung Weiß; <50% mehr richtung Schwarz
+* Gravity: Stärke der Gravitation
+* Friction: Die Reibung (Verlangsamung) der Partikel
+* Fadeeffect: Intensität der Spur, welche die Partikel hinter sich herziehen
+* Particleradius: Größe der Partikel
+* Particlespeed: Geschwindigkeit der Partikel
+* Particlealphareduction: Geschwindigkeit mit der die Partikel ausbrennen
+
+
+## Installationsanleitung
 
 Vorrausetzungen:
 

@@ -1,6 +1,6 @@
 namespace Firework {
+  //Hilfsklasse zum darstellen eines Vektors für z.B. Position oder Bewegung
   export class Vector {
-
     public x: number;
     public y: number;
 
